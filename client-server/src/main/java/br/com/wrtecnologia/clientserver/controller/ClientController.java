@@ -20,7 +20,6 @@ public class ClientController {
                 .build();
     }
 
-    /*
     @GetMapping("/home")
     public Mono<String> home(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient client, @AuthenticationPrincipal OidcUser oidcUser) {
 
@@ -34,7 +33,6 @@ public class ClientController {
                 oidcUser.getIdToken().getTokenValue(),
                 oidcUser.getClaims()));
     }
-     */
 
     @GetMapping("/tasks")
     public Mono<String> getTasks(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient client) {
