@@ -41,7 +41,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9001
+          issuer-uri: http://127.0.0.1:9001
 server:
   port: 9090
 ```
@@ -99,12 +99,7 @@ O Client Server é a aplicação que faz requisições ao Resource Server utiliz
 Personalize as configurações conforme necessário:
 ```properties
 server.port=9001
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=password
-spring.h2.console.enabled=true
-spring.security.oauth2.client.provider.authserver.jwk-set-uri=http://localhost:9001/.well-known/jwks.json
+logging.level.org.springframework.security=trace
 ```
 
 #### Resource Server (`resource-server/src/main/resources/application.yaml`)
@@ -116,7 +111,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9001
+          issuer-uri: http://127.0.0.1:9001
 server:
   port: 9090
 ```
@@ -141,10 +136,10 @@ spring:
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
         provider:
           authserver:
-            authorization-uri: http://localhost:9001/oauth/authorize
-            token-uri: http://localhost:9001/oauth/token
-            user-info-uri: http://localhost:9001/userinfo
-            jwk-set-uri: http://localhost:9001/.well-known/jwks.json
+            authorization-uri: http://127.0.0.1:9001/oauth/authorize
+            token-uri: http://127.0.0.1:9001/oauth/token
+            user-info-uri: http://127.0.0.1:9001/userinfo
+            jwk-set-uri: http://127.0.0.1:9001/.well-known/jwks.json
         user:
           name-attribute: sub
 ```

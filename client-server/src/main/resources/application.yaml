@@ -18,5 +18,5 @@ spring:
             client-name: client-server-oidc
         provider:
           spring:
-            issuer-uri: http://localhost:9001
+            issuer-uri: http://127.0.0.1:9001
 
