@@ -19,7 +19,4 @@ spring:
         provider:
           spring:
             issuer-uri: http://localhost:9001
-      #resourceserver:
-      #  jwt:
-      #    issuer-uri: http://localhost:9090
 
