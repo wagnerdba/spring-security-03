@@ -13,7 +13,7 @@ public class TasksController {
     @GetMapping
     public String getTasks(@AuthenticationPrincipal Jwt jwt) {
         return """
-                    <h1>Top Secret tasks for: %s</h1>
+                    <h1>Top Secret info for: %s</h1>
                     <ol>
                         <li>Claims: %s</li>
                         <li>Tasks.: %s</li>
