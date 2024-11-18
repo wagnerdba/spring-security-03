@@ -24,10 +24,27 @@ public class ClientController {
     public Mono<String> home(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient client, @AuthenticationPrincipal OidcUser oidcUser) {
 
         return Mono.just("""
-                <h3>Access Token: %s<h3>
-                <h3>Refresh Token: %s<h3>
-                <h3>Id Token: %s<h3>
-                <h3>Claims: %s<h3>
+                <html>
+                  <head>
+                        <style>
+                             body {
+                                  font-family: 'Courier New', Arial, sans-serif;
+                                  font-size: 16px;
+                                  color: black;
+                             }
+                             h3 {
+                                  font-size: 18px;
+                                  color: red;
+                             }
+                        </style>
+                  </head>
+                  <body>
+                     <h3>Access Token:</h3> %s
+                     <h3>Refresh Token:</h3> %s
+                     <h3>Id Token:</h3> %s
+                     <h3>Claims:</h3> %s
+                  </body>
+                </html>
                 """.formatted(client.getAccessToken().getTokenValue(),
                 client.getRefreshToken().getTokenValue(),
                 oidcUser.getIdToken().getTokenValue(),

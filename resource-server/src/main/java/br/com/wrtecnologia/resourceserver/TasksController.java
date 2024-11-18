@@ -13,11 +13,29 @@ public class TasksController {
     @GetMapping
     public String getTasks(@AuthenticationPrincipal Jwt jwt) {
         return """
-                    <h1>Top Secret info for: %s</h1>
-                    <ol>
-                        <li>Claims: %s</li>
-                        <li>Tasks.: %s</li>
-                        <li>Token.: %s</li>
-                """.formatted(jwt.getSubject(), jwt.getClaims(), jwt.getClaims().get("tasks"), jwt.getTokenValue());
+               <html>
+                  <head>
+                     <style>
+                        body {
+                             font-family: 'Courier New', Arial, sans-serif;
+                             font-size: 16px;
+                             color: black;
+                        }
+                        li, h1 {
+                             font-size: 18px;
+                             color: red;
+                        }
+                     </style>
+                  </head>
+                  <body>
+                     <h1>Top Secret info for: %s</h1>
+                        <ol>
+                          <li>Claims:</li>%s
+                          <li>Tasks:</li>%s
+                          <li>Token:</li>%s
+                        </ol>
+                  </body>
+               </html>
+               """.formatted(jwt.getSubject(), jwt.getClaims(), jwt.getClaims().get("tasks"), jwt.getTokenValue());
     }
 }
